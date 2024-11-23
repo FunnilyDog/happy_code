@@ -1,5 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
 const Index = () => {
-  return <div>111</div>;
+  const navgiteTo = useNavigate();
+  return (
+    <div>
+      111
+      <button
+        onClick={() => {
+          navgiteTo("/testContext");
+        }}
+      >
+        跳转
+      </button>
+    </div>
+  );
 };
 
 export default Index;

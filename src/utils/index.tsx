@@ -40,3 +40,11 @@ export const thorttle = (
     }
   };
 };
+
+export const maxNum = (nums: number[]) => {
+  const stringNums = nums.map(String);
+  // @ts-ignore
+  const res = stringNums.sort((a, b) => b + a - (a + b)).join("");
+  if (res.startsWith("0")) return "0";
+  return res;
+};

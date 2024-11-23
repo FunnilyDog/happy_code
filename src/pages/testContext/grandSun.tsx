@@ -11,7 +11,7 @@ export const GrandSon = () => {
       ...initPerson,
       name: "grandSon"
     });
-  }, []);
+  }, [setPersonB]);
 
   return (
     <div>

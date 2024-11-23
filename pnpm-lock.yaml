@@ -5,6 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@babel/core':
+    specifier: ^7.16.0
+    version: 7.22.10
+  '@pmmmwh/react-refresh-webpack-plugin':
+    specifier: ^0.5.3
+    version: 0.5.11(react-refresh@0.11.0)(webpack-dev-server@4.15.1)(webpack@5.88.2)
+  '@svgr/webpack':
+    specifier: ^5.5.0
+    version: 5.5.0
   '@testing-library/jest-dom':
     specifier: ^5.17.0
     version: 5.17.0
@@ -26,24 +35,159 @@ dependencies:
   '@types/react-dom':
     specifier: ^18.2.7
     version: 18.2.7
+  babel-jest:
+    specifier: ^27.4.2
+    version: 27.5.1(@babel/core@7.22.10)
+  babel-loader:
+    specifier: ^8.2.3
+    version: 8.3.0(@babel/core@7.22.10)(webpack@5.88.2)
+  babel-plugin-named-asset-import:
+    specifier: ^0.3.8
+    version: 0.3.8(@babel/core@7.22.10)
+  babel-preset-react-app:
+    specifier: ^10.0.1
+    version: 10.0.1
+  bfj:
+    specifier: ^7.0.2
+    version: 7.0.2
+  browserslist:
+    specifier: ^4.18.1
+    version: 4.21.10
+  camelcase:
+    specifier: ^6.2.1
+    version: 6.3.0
+  case-sensitive-paths-webpack-plugin:
+    specifier: ^2.4.0
+    version: 2.4.0
+  css-loader:
+    specifier: ^6.5.1
+    version: 6.8.1(webpack@5.88.2)
+  css-minimizer-webpack-plugin:
+    specifier: ^3.2.0
+    version: 3.4.1(webpack@5.88.2)
+  dotenv:
+    specifier: ^10.0.0
+    version: 10.0.0
+  dotenv-expand:
+    specifier: ^5.1.0
+    version: 5.1.0
+  eslint:
+    specifier: ^8.3.0
+    version: 8.47.0
+  eslint-config-react-app:
+    specifier: ^7.0.1
+    version: 7.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.47.0)(jest@27.5.1)(typescript@4.9.5)
+  eslint-webpack-plugin:
+    specifier: ^3.1.1
+    version: 3.2.0(eslint@8.47.0)(webpack@5.88.2)
+  file-loader:
+    specifier: ^6.2.0
+    version: 6.2.0(webpack@5.88.2)
+  fs-extra:
+    specifier: ^10.0.0
+    version: 10.1.0
+  html-webpack-plugin:
+    specifier: ^5.5.0
+    version: 5.5.3(webpack@5.88.2)
+  identity-obj-proxy:
+    specifier: ^3.0.0
+    version: 3.0.0
+  jest:
+    specifier: ^27.4.3
+    version: 27.5.1
+  jest-resolve:
+    specifier: ^27.4.2
+    version: 27.5.1
+  jest-watch-typeahead:
+    specifier: ^1.0.0
+    version: 1.1.0(jest@27.5.1)
+  less:
+    specifier: ^4.2.0
+    version: 4.2.0
+  less-loader:
+    specifier: ^12.2.0
+    version: 12.2.0(less@4.2.0)(webpack@5.88.2)
+  mini-css-extract-plugin:
+    specifier: ^2.4.5
+    version: 2.7.6(webpack@5.88.2)
+  postcss:
+    specifier: ^8.4.4
+    version: 8.4.28
+  postcss-flexbugs-fixes:
+    specifier: ^5.0.2
+    version: 5.0.2(postcss@8.4.28)
+  postcss-loader:
+    specifier: ^6.2.1
+    version: 6.2.1(postcss@8.4.28)(webpack@5.88.2)
+  postcss-normalize:
+    specifier: ^10.0.1
+    version: 10.0.1(browserslist@4.21.10)(postcss@8.4.28)
+  postcss-preset-env:
+    specifier: ^7.0.1
+    version: 7.8.3(postcss@8.4.28)
+  prompts:
+    specifier: ^2.4.2
+    version: 2.4.2
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-app-polyfill:
+    specifier: ^3.0.0
+    version: 3.0.0
+  react-dev-utils:
+    specifier: ^12.0.1
+    version: 12.0.1(eslint@8.47.0)(typescript@4.9.5)(webpack@5.88.2)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-refresh:
+    specifier: ^0.11.0
+    version: 0.11.0
   react-router-dom:
     specifier: ^6.28.0
     version: 6.28.0(react-dom@18.2.0)(react@18.2.0)
-  react-scripts:
-    specifier: 5.0.1
-    version: 5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.47.0)(react@18.2.0)(typescript@4.9.5)
+  resolve:
+    specifier: ^1.20.0
+    version: 1.22.4
+  resolve-url-loader:
+    specifier: ^4.0.0
+    version: 4.0.0
+  sass-loader:
+    specifier: ^12.3.0
+    version: 12.6.0(webpack@5.88.2)
+  semver:
+    specifier: ^7.3.5
+    version: 7.5.4
+  source-map-loader:
+    specifier: ^3.0.0
+    version: 3.0.2(webpack@5.88.2)
+  style-loader:
+    specifier: ^3.3.1
+    version: 3.3.3(webpack@5.88.2)
+  tailwindcss:
+    specifier: ^3.0.2
+    version: 3.3.3
+  terser-webpack-plugin:
+    specifier: ^5.2.5
+    version: 5.3.9(webpack@5.88.2)
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
   web-vitals:
     specifier: ^2.1.4
     version: 2.1.4
+  webpack:
+    specifier: ^5.64.4
+    version: 5.88.2
+  webpack-dev-server:
+    specifier: ^4.6.0
+    version: 4.15.1(webpack@5.88.2)
+  webpack-manifest-plugin:
+    specifier: ^4.0.2
+    version: 4.1.1(webpack@5.88.2)
+  workbox-webpack-plugin:
+    specifier: ^6.4.1
+    version: 6.6.0(webpack@5.88.2)
 
 packages:
 
@@ -393,6 +537,7 @@ packages:
   /@babel/plugin-proposal-class-properties@7.18.6(@babel/core@7.22.10):
     resolution: {integrity: sha512-cumfXOF0+nzZrrN8Rf0t7M+tF6sZc7vhQwYQck9q1/5w2OExlD+b4v4RpMJFaV1Z7WcDRgO6FqvxqxGlwo+RHQ==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -418,6 +563,7 @@ packages:
   /@babel/plugin-proposal-nullish-coalescing-operator@7.18.6(@babel/core@7.22.10):
     resolution: {integrity: sha512-wQxQzxYeJqHcfppzBDnm1yAY0jSRkUXR2z8RePZYrKwMKgMlE8+Z6LUno+bd6LvbGh8Gltvy74+9pIYkr+XkKA==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -429,6 +575,7 @@ packages:
   /@babel/plugin-proposal-numeric-separator@7.18.6(@babel/core@7.22.10):
     resolution: {integrity: sha512-ozlZFogPqoLm8WBr5Z8UckIoE4YQ5KESVcNudyXOR8uqIkliTEgJ3RoketfG6pmzLdeZF0H/wjE9/cCEitBl7Q==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -440,6 +587,7 @@ packages:
   /@babel/plugin-proposal-optional-chaining@7.21.0(@babel/core@7.22.10):
     resolution: {integrity: sha512-p4zeefM72gpmEe2fkUr/OnOXpWEf8nAgk7ZYVqqfFiyIG7oFfVZcCrU64hWn5xp4tQ9LkV4bTIa5rD0KANpKNA==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -452,6 +600,7 @@ packages:
   /@babel/plugin-proposal-private-methods@7.18.6(@babel/core@7.22.10):
     resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -472,6 +621,7 @@ packages:
   /@babel/plugin-proposal-private-property-in-object@7.21.11(@babel/core@7.22.10):
     resolution: {integrity: sha512-0QZ8qP/3RLDVBwBFoWAwCtgcDZJVwA5LUJRZU8x2YFfKNuFq161wK3cuGrALu5yiPu+vzwTAg/sMWVNeWeNyaw==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-property-in-object instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
@@ -2896,6 +3046,7 @@ packages:
 
   /abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
+    deprecated: Use your platform's native atob() and btoa() methods instead
     dev: false
 
   /accepts@1.3.8:
@@ -2915,6 +3066,7 @@ packages:
 
   /acorn-import-assertions@1.9.0(acorn@8.10.0):
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
     dependencies:
@@ -3822,6 +3974,12 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
+  /copy-anything@2.0.6:
+    resolution: {integrity: sha512-1j20GZTsvKNkc4BY3NpMOM8tt///wY3FpIzozTOFO2ffuZcV61nojHXVKIy3WM+7ADCy5FVhdZYHYDdgTU0yJw==}
+    dependencies:
+      is-what: 3.14.1
+    dev: false
+
   /core-js-compat@3.32.1:
     resolution: {integrity: sha512-GSvKDv4wE0bPnQtjklV101juQ85g6H3rm5PDP20mqlS5j0kXF3pP97YvAu5hl+uFHqMictp3b2VxOHljWMAtuA==}
     dependencies:
@@ -4345,6 +4503,7 @@ packages:
   /domexception@2.0.1:
     resolution: {integrity: sha512-yxJ2mFy/sibVQlu5qHjOkf9J3K6zgmCxgJ94u2EdvDOV09H+32LtRswEcUsmUWN72pVLOEnTSRaIVVzVQgS0dg==}
     engines: {node: '>=8'}
+    deprecated: Use your platform's native DOMException instead
     dependencies:
       webidl-conversions: 5.0.0
     dev: false
@@ -4446,6 +4605,15 @@ packages:
   /entities@2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
     dev: false
+
+  /errno@0.1.8:
+    resolution: {integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      prr: 1.0.1
+    dev: false
+    optional: true
 
   /error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
@@ -5365,6 +5533,7 @@ packages:
 
   /glob@7.1.6:
     resolution: {integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -5376,6 +5545,7 @@ packages:
 
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -5700,6 +5870,14 @@ packages:
     engines: {node: '>= 4'}
     dev: false
 
+  /image-size@0.5.5:
+    resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
+    engines: {node: '>=0.10.0'}
+    hasBin: true
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /immer@9.0.21:
     resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
     dev: false
@@ -5733,6 +5911,7 @@ packages:
 
   /inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
@@ -5993,6 +6172,10 @@ packages:
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
+    dev: false
+
+  /is-what@3.14.1:
+    resolution: {integrity: sha512-sNxgpk9793nzSs7bA6JQJGeIuRBQhAaNGG77kzYQgMkrID+lS6SlK07K5LaptscDlSaIgH+GPFzf+d75FVxozA==}
     dev: false
 
   /is-wsl@2.2.0:
@@ -6792,6 +6975,41 @@ packages:
       shell-quote: 1.8.1
     dev: false
 
+  /less-loader@12.2.0(less@4.2.0)(webpack@5.88.2):
+    resolution: {integrity: sha512-MYUxjSQSBUQmowc0l5nPieOYwMzGPUaTzB6inNW/bdPEG9zOL3eAAD1Qw5ZxSPk7we5dMojHwNODYMV1hq4EVg==}
+    engines: {node: '>= 18.12.0'}
+    peerDependencies:
+      '@rspack/core': 0.x || 1.x
+      less: ^3.5.0 || ^4.0.0
+      webpack: ^5.0.0
+    peerDependenciesMeta:
+      '@rspack/core':
+        optional: true
+      webpack:
+        optional: true
+    dependencies:
+      less: 4.2.0
+      webpack: 5.88.2
+    dev: false
+
+  /less@4.2.0:
+    resolution: {integrity: sha512-P3b3HJDBtSzsXUl0im2L7gTO5Ubg8mEN6G8qoTS77iXxXX4Hvu4Qj540PZDvQ8V6DmX6iXo98k7Md0Cm1PrLaA==}
+    engines: {node: '>=6'}
+    hasBin: true
+    dependencies:
+      copy-anything: 2.0.6
+      parse-node-version: 1.0.1
+      tslib: 2.6.2
+    optionalDependencies:
+      errno: 0.1.8
+      graceful-fs: 4.2.11
+      image-size: 0.5.5
+      make-dir: 2.1.0
+      mime: 1.6.0
+      needle: 3.3.1
+      source-map: 0.6.1
+    dev: false
+
   /leven@3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
     engines: {node: '>=6'}
@@ -6915,6 +7133,16 @@ packages:
     dependencies:
       sourcemap-codec: 1.4.8
     dev: false
+
+  /make-dir@2.1.0:
+    resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      pify: 4.0.1
+      semver: 5.7.2
+    dev: false
+    optional: true
 
   /make-dir@3.1.0:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
@@ -7089,6 +7317,17 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: false
+
+  /needle@3.3.1:
+    resolution: {integrity: sha512-6k0YULvhpw+RoLNiQCRKOl09Rv1dPLr8hHnVjHqdolKwDrdNyk+Hmrthi4lIGPPz3r39dLx0hsF5s40sZ3Us4Q==}
+    engines: {node: '>= 4.4.x'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      iconv-lite: 0.6.3
+      sax: 1.2.4
+    dev: false
+    optional: true
 
   /negotiator@0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
@@ -7370,6 +7609,11 @@ packages:
       lines-and-columns: 1.2.4
     dev: false
 
+  /parse-node-version@1.0.1:
+    resolution: {integrity: sha512-3YHlOa/JgH6Mnpr05jP9eDG254US9ek25LyIxZlDItp2iJtwyaXQb57lBYLdT3MowkUFYEV2XXNAYIPlESvJlA==}
+    engines: {node: '>= 0.10'}
+    dev: false
+
   /parse5@6.0.1:
     resolution: {integrity: sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==}
     dev: false
@@ -7440,6 +7684,13 @@ packages:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
     dev: false
+
+  /pify@4.0.1:
+    resolution: {integrity: sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
@@ -8307,6 +8558,12 @@ packages:
       ipaddr.js: 1.9.1
     dev: false
 
+  /prr@1.0.1:
+    resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /psl@1.9.0:
     resolution: {integrity: sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==}
     dev: false
@@ -8319,6 +8576,10 @@ packages:
   /q@1.5.1:
     resolution: {integrity: sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==}
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
+    deprecated: |-
+      You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+
+      (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
     dev: false
 
   /qs@6.11.0:
@@ -8469,103 +8730,6 @@ packages:
     dependencies:
       '@remix-run/router': 1.21.0
       react: 18.2.0
-    dev: false
-
-  /react-scripts@5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.47.0)(react@18.2.0)(typescript@4.9.5):
-    resolution: {integrity: sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==}
-    engines: {node: '>=14.0.0'}
-    hasBin: true
-    peerDependencies:
-      eslint: '*'
-      react: '>= 16'
-      typescript: ^3.2.1 || ^4
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@babel/core': 7.22.10
-      '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(react-refresh@0.11.0)(webpack-dev-server@4.15.1)(webpack@5.88.2)
-      '@svgr/webpack': 5.5.0
-      babel-jest: 27.5.1(@babel/core@7.22.10)
-      babel-loader: 8.3.0(@babel/core@7.22.10)(webpack@5.88.2)
-      babel-plugin-named-asset-import: 0.3.8(@babel/core@7.22.10)
-      babel-preset-react-app: 10.0.1
-      bfj: 7.0.2
-      browserslist: 4.21.10
-      camelcase: 6.3.0
-      case-sensitive-paths-webpack-plugin: 2.4.0
-      css-loader: 6.8.1(webpack@5.88.2)
-      css-minimizer-webpack-plugin: 3.4.1(webpack@5.88.2)
-      dotenv: 10.0.0
-      dotenv-expand: 5.1.0
-      eslint: 8.47.0
-      eslint-config-react-app: 7.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.5)(eslint@8.47.0)(jest@27.5.1)(typescript@4.9.5)
-      eslint-webpack-plugin: 3.2.0(eslint@8.47.0)(webpack@5.88.2)
-      file-loader: 6.2.0(webpack@5.88.2)
-      fs-extra: 10.1.0
-      html-webpack-plugin: 5.5.3(webpack@5.88.2)
-      identity-obj-proxy: 3.0.0
-      jest: 27.5.1
-      jest-resolve: 27.5.1
-      jest-watch-typeahead: 1.1.0(jest@27.5.1)
-      mini-css-extract-plugin: 2.7.6(webpack@5.88.2)
-      postcss: 8.4.28
-      postcss-flexbugs-fixes: 5.0.2(postcss@8.4.28)
-      postcss-loader: 6.2.1(postcss@8.4.28)(webpack@5.88.2)
-      postcss-normalize: 10.0.1(browserslist@4.21.10)(postcss@8.4.28)
-      postcss-preset-env: 7.8.3(postcss@8.4.28)
-      prompts: 2.4.2
-      react: 18.2.0
-      react-app-polyfill: 3.0.0
-      react-dev-utils: 12.0.1(eslint@8.47.0)(typescript@4.9.5)(webpack@5.88.2)
-      react-refresh: 0.11.0
-      resolve: 1.22.4
-      resolve-url-loader: 4.0.0
-      sass-loader: 12.6.0(webpack@5.88.2)
-      semver: 7.5.4
-      source-map-loader: 3.0.2(webpack@5.88.2)
-      style-loader: 3.3.3(webpack@5.88.2)
-      tailwindcss: 3.3.3
-      terser-webpack-plugin: 5.3.9(webpack@5.88.2)
-      typescript: 4.9.5
-      webpack: 5.88.2
-      webpack-dev-server: 4.15.1(webpack@5.88.2)
-      webpack-manifest-plugin: 4.1.1(webpack@5.88.2)
-      workbox-webpack-plugin: 6.6.0(webpack@5.88.2)
-    optionalDependencies:
-      fsevents: 2.3.2
-    transitivePeerDependencies:
-      - '@babel/plugin-syntax-flow'
-      - '@babel/plugin-transform-react-jsx'
-      - '@parcel/css'
-      - '@swc/core'
-      - '@types/babel__core'
-      - '@types/webpack'
-      - bufferutil
-      - canvas
-      - clean-css
-      - csso
-      - debug
-      - esbuild
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - fibers
-      - node-notifier
-      - node-sass
-      - rework
-      - rework-visit
-      - sass
-      - sass-embedded
-      - sockjs-client
-      - supports-color
-      - ts-node
-      - type-fest
-      - uglify-js
-      - utf-8-validate
-      - vue-template-compiler
-      - webpack-cli
-      - webpack-hot-middleware
-      - webpack-plugin-serve
     dev: false
 
   /react@18.2.0:
@@ -8793,6 +8957,7 @@ packages:
 
   /rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
     dependencies:
       glob: 7.2.3
@@ -8947,6 +9112,13 @@ packages:
     dependencies:
       node-forge: 1.3.1
     dev: false
+
+  /semver@5.7.2:
+    resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
+    hasBin: true
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /semver@6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
@@ -10237,6 +10409,7 @@ packages:
 
   /workbox-google-analytics@6.6.0:
     resolution: {integrity: sha512-p4DJa6OldXWd6M9zRl0H6vB9lkrmqYFkRQ2xEiNdBFp9U0LhsGO7hsBscVEyH9H2/3eZZt8c97NB2FD9U2NJ+Q==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 6.6.0
       workbox-core: 6.6.0

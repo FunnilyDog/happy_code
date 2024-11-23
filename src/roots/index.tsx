@@ -1,6 +1,9 @@
 //路由表配置：src/routes/index.jsx
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import { Navigate } from "react-router-dom";
+
+const TestContext = lazy(() => import("../pages/testContext"));
+const Test = lazy(() => import("../pages/test"));
 
 const routes = [
   // Navigate 重定向
@@ -10,11 +13,19 @@ const routes = [
   },
   {
     path: "/testContext",
-    Component: lazy(() => import("../pages/test"))
+    element: (
+      <Suspense>
+        <TestContext />
+      </Suspense>
+    )
   },
   {
     path: "/test",
-    Component: lazy(() => import("../pages/test"))
+    element: (
+      <Suspense>
+        <Test />
+      </Suspense>
+    )
   }
 ];
 
