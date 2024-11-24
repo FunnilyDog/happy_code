@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "../../utils/bind";
 
 const Index = () => {
   const navgiteTo = useNavigate();

@@ -53,8 +53,30 @@
       <div class="center">1111111111122233</div>
       <input type="text" />
     </div>
+    <input id="fileInput" type="file" class="file" name="file" />
+    <img src="" alt="" />
     <div style="height: 200px"></div>
     <canvas id="myCanvas" width="200" height="200"></canvas>
+
+    <script>
+      function previewFile(e) {
+        let reader;
+        const file = e.target.files[0];
+        if (file) {
+          // 创建流对象
+          reader = new FileReader();
+          reader.readAsDataURL(file);
+        }
+        // 捕获 转换完毕
+        reader.onload = function (e) {
+          // 转换后的base64就在e.target.result里面,直接放到img标签的src属性即可
+          document.querySelector("img").src = e.target.result;
+        };
+      }
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", previewFile);
+    </script>
 
     <script src="../utils/myPromise.ts"></script>
 
