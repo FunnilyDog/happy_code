@@ -8,6 +8,8 @@ function func() {}
 
 # zustand 优点
 
+    useSyncExternalStore
+
 # react 中同步 setState
 
 1. setState 只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout 中都是同步的。

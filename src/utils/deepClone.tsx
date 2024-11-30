@@ -1,4 +1,4 @@
-const deepClone = (obj: unknown, cacheMap = new WeakMap()): unknown => {
+export const deepClone = (obj: unknown, cacheMap = new WeakMap()): unknown => {
   if (typeof obj !== "object" || obj === null) return obj;
 
   if (obj instanceof Date) return new Date(obj);
@@ -22,8 +22,6 @@ const deepClone = (obj: unknown, cacheMap = new WeakMap()): unknown => {
   }
 
   const newObj: any = Array.isArray(obj) ? [] : {};
-
-  console.log("cacheMap", cacheMap);
 
   if (cacheMap.has(obj)) return cacheMap.get(obj);
   cacheMap.set(obj, newObj);
@@ -63,5 +61,3 @@ obj2["f"] = () => {
 };
 
 console.log("objClone1", objClone1, objClone1?.f());
-
-export default deepClone;

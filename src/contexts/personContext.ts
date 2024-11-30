@@ -25,12 +25,21 @@ export const initPerson = {
     sports: ["swim", "table tennis"]
   }
 };
+export const initPerson2 = {
+  name: "dx",
+  age: 19,
+  sex: "男",
+  hobby: {
+    game: ["Lol", "DNF"],
+    sports: ["swim", "table tennis"]
+  }
+};
 // TODO 切换成 useSyncExternalStore
 export const PersonContext = createContext<PersonContextType | null>(null);
 
 export const useHeader = () => {
-  const [person, setPerson] = useState(initPerson);
-  const [personB, setPersonB] = useState(initPerson);
+  const [person, setPerson] = useState(initPerson2);
+  const [personB, setPersonB] = useState(initPerson2);
 
   const values = useMemo(
     () => ({

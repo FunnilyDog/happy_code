@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { initPerson, PersonContext } from "../../contexts/personContext";
+import { initPerson2, PersonContext } from "../../contexts/personContext";
 import { useEffect } from "react";
 
 export const GrandSon = () => {
@@ -8,7 +8,7 @@ export const GrandSon = () => {
 
   useEffect(() => {
     setPersonB({
-      ...initPerson,
+      ...initPerson2,
       name: "grandSon"
     });
   }, [setPersonB]);

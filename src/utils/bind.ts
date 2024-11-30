@@ -50,3 +50,5 @@ let obj = {
 const a = fn.myBind(obj, 1, 2, 3); // this会变成传入的obj，传入的参数必须是一个数组；
 a();
 // fn.myCall(1, 2);
+
+export {};

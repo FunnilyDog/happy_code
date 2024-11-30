@@ -1,9 +1,3 @@
-import { debounce } from "../../utils";
-import { useDebounce } from "../../utils/useDebounce";
-import { useThrottle } from "../../utils/useThrottle";
-import { format, sortAs } from "../../utils/format";
-import { MyPromise } from "../../utils/myPromise_copy";
-
 export const Debounce = () => {
   // const { run } = useDebounce(a, 1000, { immediately: true });
   // const { run: throttle } = useThrottle(a, 1000, { immediately: false });
