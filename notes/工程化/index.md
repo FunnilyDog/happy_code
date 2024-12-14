@@ -18,6 +18,29 @@ const a = fn.bind(thisObj, 1, 2, 3);
 a();
 ```
 
+## Commonjs(node) 和 es nodule 模块化 导入导出的区别
+
+### CommonJs
+
+    关键字：导入 require 导出 module.exports / exports
+    可以导出任意类型，为同步加载模块 因此不适用于浏览器（若某个模块加载很慢会导致页面假死）。
+    CommonJs如何避免循环导入：
+    首先加载之后的文件的 module 会被缓存到 Module 上，比如一个模块已经 require 引入了 a 模块，如果另外一个模块再次引用 a ，那么会直接读取缓存值 module ，所以无需再次执行模块
+    module.exports / exports 区别：
+    如果我们不想在 commonjs 中导出对象，而是只导出一个类或者一个函数再或者其他属性的情况，那么 module.exports 就更方便
+    exports 会被初始化成一个对象，也就是我们只能在对象上绑定属性
+
+### ES Module
+
+    关键字: 导入 import 导出 export / export defult
+    ES6 module 的引入和导出是静态的,可导出任意类型，可默认导出某个属性，导入导出时可用 as 关键字 重命名 导入导出属性。也可用于node 模块化
+
+    ES Module 避免循环依赖：
+    ES Module借助模块地图，已经进入过的模块标注为获取中，遇到import语句会去检查这个地图，已经标注为获取中的则不会进入，地图中的每一个节点是一个模块记录，上面有导出变量的内存地址，导入时会做一个连接——即指向同一块内存。
+
+    import() 动态引入:
+    import() 返回一个 Promise 对象， 返回的 Promise 的 then 成功回调中，可以获取模块的加载成功信息。
+
 # 浏览器内核
 
 ## 渲染引擎

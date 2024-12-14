@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Margin边距重叠</title>
+    <style>
+      .box {
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        background: #000;
+      }
+      .content {
+        width: 200px;
+        height: 200px;
+        order: 1px solid blue;
+      }
+      .box2 {
+        width: 50px;
+        height: 50px;
+        background: red;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+        <div class="box">2222</div>
+    </p>
+    <!-- <div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+
+    <div class="content">
+      <div class="box2"></div>
+      <div>
+        我是文本我是文本我是文本我是文本我是文本我是文本我是文本
+        我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本
+      </div>
+    </div> -->
+  </body>
+</html>

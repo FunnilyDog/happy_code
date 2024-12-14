@@ -1,80 +1,34 @@
 import { useNavigate } from "react-router-dom";
-// import "../../utils/deepClone";
+// import A from "./test";
+import { useLayoutEffect } from "react";
 
-export const getUserInfo = () => {
-  return new Promise((resolve, reject) => {
-    resolve({ name: "dengx", age: 18 });
-  });
+// 输入 字符串数组   [ 'avdf','agfd']
+// 根据字符串 首字母 归类 {'a': ['agfd','avdf']}
+
+const myWorker = new Worker(new URL("./test.ts", import.meta.url)); // 创建 worker
+
+myWorker.postMessage("Greeting from Main.js");
+
+myWorker.onmessage = function (e) {
+  console.log(e.data); // 这里可以对接受到的数据进行一些处理
+  console.log("Message received from worker");
+  myWorker.terminate();
+};
+myWorker.onerror = (e) => {
+  console.log("e", e);
 };
 
-export function* _async() {
-  const userInfo: number = yield getUserInfo();
-  console.log("2222", userInfo);
-  const name: string = yield () => {
-    return "dengxi";
-  };
-  console.log("name", name);
-
-  const num: number = yield 3;
-  console.log("num", num);
-}
-
-export const autoRun = (generator: () => Generator<any>) => {
-  const gen = generator();
-
-  const next = (data: any) => {
-    const result = gen.next(data);
-    if (result.done) return;
-    if (result.value instanceof Promise) {
-      result.value.then((res: any) => {
-        next(res);
-      });
-    } else if (typeof result.value === "function") {
-      next(result.value());
-    } else {
-      next(result.value);
-    }
-  };
-  next(undefined);
-};
-Promise.retry = (callback, retryTime = 5) => {
-  // const curPromise = callback()
-  console.log("retryTime", retryTime);
-
-  return new Promise((resolve, reject) => {
-    callback().then(
-      () => {
-        resolve(retryTime);
-        console.log("retryTime", retryTime);
-      },
-      (reason) => {
-        if (!retryTime) reject(reason);
-        else {
-          const p = Promise.retry(callback, --retryTime).then(resolve, reject);
-          console.log("p", p);
-        }
-      }
-    );
-  });
-};
-function getProm() {
-  const n = Math.random();
-  return new Promise((resolve, reject) => {
-    setTimeout(() => (n > 1 ? resolve(n) : reject(n)), 1000);
-  });
-}
-Promise.retry(getProm)
-  .then((res) => console.log("res", res))
-  .catch((err) => console.log("err", err));
+console.log("myWorker", myWorker);
 
 const Index = () => {
-  // autoRun(_async);
-
   const navgiteTo = useNavigate();
+
   return (
     <div>
-      111
+      <div>点击</div>
+
       <button
+        id="form"
         onClick={() => {
           navgiteTo("/testContext");
         }}

@@ -8,7 +8,6 @@ const getPublicUrlOrPath = require("react-dev-utils/getPublicUrlOrPath");
 // https://github.com/facebook/create-react-app/issues/637
 const a = process.cwd();
 const appDirectory = fs.realpathSync(a);
-console.log("appDirectory", appDirectory);
 
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 

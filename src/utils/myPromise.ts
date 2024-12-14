@@ -99,6 +99,8 @@ class MyPromise {
   }
 
   then(onFulfilled: UnknownFuc, onRejected: UnknownFuc) {
+    console.log("onFulfilled", onFulfilled, this.MicroTasks);
+
     const resultPromise = new MyPromise((resolve: VoidFuc, reject: VoidFuc) => {
       this.MicroTasks.push({
         onFulfilled,
@@ -106,6 +108,8 @@ class MyPromise {
         resolve,
         reject
       });
+      console.log("resultPromise", this.MicroTasks, onFulfilled);
+
       this.run();
     });
     return resultPromise;
@@ -174,4 +178,4 @@ a.then(
     console.log("error", error);
   });
 
-export default MyPromise;
+export { MyPromise };
