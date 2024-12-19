@@ -3,40 +3,58 @@
   <head>
     <title>Margin边距重叠</title>
     <style>
+      section {
+        display: flex;
+      }
       .box {
-        margin: 10px;
         width: 100px;
-        height: 100px;
-        background: #000;
+        margin: 10px;
+        flex: 1;
+        background-color: black;
       }
-      .content {
-        width: 200px;
-        height: 200px;
-        order: 1px solid blue;
-      }
-      .box2 {
-        width: 50px;
-        height: 50px;
-        background: red;
-        float: left;
+      .basis {
+        padding: 4px;
+        border: 2px solid deepskyblue;
+        margin: 0 10px;
+        color: deepskyblue;
+        flex-basis: 100px;
+        /* word-break: break-all; */
       }
     </style>
   </head>
   <body>
-    <p>
-        <div class="box">2222</div>
-    </p>
-    <!-- <div>
+    <section>
       <div class="box"></div>
-      <div class="box"></div>
-    </div>
-
-    <div class="content">
-      <div class="box2"></div>
-      <div>
-        我是文本我是文本我是文本我是文本我是文本我是文本我是文本
-        我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本
+      <div class="box">
+        <!-- <div>11111</div> -->
       </div>
-    </div> -->
+      <div class="box"></div>
+    </section>
+
+    <button />
+
+    <img
+      src="https://p3-passport.byteacctimg.com/img/user-avatar/3ed194550ceba4d9bc31a493bb2cfe3a~200x200.awebp"
+      alt=""
+    />
+
+     <p>
+      <div></div>
+    </p>
+
+    <section>
+      <div class="basis">
+        flex-basis 指定了 flex
+        元素在主轴方向上的初始大小，当一个元素同时被设置了 flex-basis (除值为
+        auto 外) 和 width (或者在 flex-direction: column 情况下设置了 height) ,
+        flex-basis 具有更高的优先级。
+      </div>
+      <div class="basis">
+        flex-basis 指定了 flex
+        元素在主轴方向上的初始大小，当一个元素同时被设置了 flex-basis (除值为
+        auto 外) 和 width (或者在 flex-direction: column 情况下设置了 height) ,
+        flex-basis 具有更高的优先级。
+      </div>
+    </section>
   </body>
 </html>

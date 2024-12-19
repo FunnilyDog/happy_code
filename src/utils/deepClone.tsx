@@ -23,6 +23,7 @@ export const deepClone = (obj: unknown, cacheMap = new WeakMap()): unknown => {
 
   const newObj: any = Array.isArray(obj) ? [] : {};
 
+  // 防止循环引用
   if (cacheMap.has(obj)) return cacheMap.get(obj);
   cacheMap.set(obj, newObj);
 
