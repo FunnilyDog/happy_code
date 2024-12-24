@@ -17,10 +17,6 @@ const Index = () => {
       >
         跳转
       </button>
-
-      <p>
-        <div></div>
-      </p>
     </div>
   );
 };

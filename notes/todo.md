@@ -9,72 +9,20 @@
 受访问的服务器必须支持 CORS，也就是以跨域方式获取资源时要返回对应的跨域头；
 为 img 标签添加 crossorigin="anonymous" 属性；
 
-# react-route 原理
-
-## history & hash 路由
-
 # 闭包
+
+内部方法引用外部变量。
+适用场景： 防抖节流
 
 # css 可替换元素
 
+-- <img> <video> <iframe>
+特点：CSS 可以影响可替换元素的位置，但不会影响到可替换元素自身的内容
+
 # 块级元素 行内元素 行内块级元素
 
-猫眼
-
-# eslint 原理
-
-## 渲染流程
-
--- 初始化：创建 ECharts 实例，初始化配置项和数据。
--- 数据处理：根据配置项和数据生成图表的内部数据结构。
--- 组件渲染：渲染各个组件，如图例、坐标轴、标题等。
--- 图表渲染：根据内部数据结构渲染图表。
--- 事件绑定：绑定交互事件，实现图表的交互功能。
-
-# 组件库 npm 包产物
-
-# echart 实现原理
-
-# canvas
-
-# 单元测试 有写过么
-
-# 工程化了解哪些
-
-# 重复数字字符串修改 n 次使之无重复
-
-eg：111222333 =》 1a12a23a3 // n=3
-
-# csrf 安全问题
-
-作业帮
-
-# render 原理/ 流程
-
-# render 触发条件
-
-# diff 过程中 key 的作用 以及 key 的应用场景
-
-# gui 渲染
-
-# 从输入 url 到 页面绘制
-
-# http1 与 http2 区别
-
-# dom 渲染时 遇到 script 标签 处理逻辑
-
-# 性能优化问题（做过哪些性能优化）
-
-# 用过哪些 webpack loader/plugins
-
-# 按需加载原理
-
-babel-plugin-import 在打包过程中检测 ast 中 对应组件引入位置 更改为 组件绝对路径以及对应样式文件的引入
-
-# lazy 原理
-
-React.lazy() 的原理是基于 React Suspense API，它使用了 JavaScript 中的动态 import() 语法来实现组件的延迟加载。当一个组件被封装在 React.lazy() 中时，Webpack 会将该组件打包成一个单独的代码块（chunk），并且在需要时才会下载和执行这个代码块。
-当渲染延迟加载的组件时，React.lazy() 首先检查是否已经加载了该组件所在的代码块。如果还没有加载，则 React.lazy() 返回一个 Promise，该 Promise 将在下载并执行组件代码块后 resolve 并返回加装好的组件。如果已经加载，则直接返回已加载的组件。
+行内块级元素： <button> <input> <textarea> <select>
+特点： 即可设置宽度，也可设置高度 行高等
 
 # 不需要渲染的 dom 标签 有哪些
 
@@ -84,3 +32,69 @@ React.lazy() 的原理是基于 React Suspense API，它使用了 JavaScript 中
 
 js 操作 dom 是同步的，浏览器渲染 是异步的
 某些布局相关信息属性会导致浏览器强制同步布局生成布局树。
+
+# 函数组件 和 类组件 优缺点
+
+函数组件没有 this ，相对类组件 更加独立 不需要继承 clas，更少的模版代码，复用性 与可维护性更强。
+
+# react diff 过程
+
+# react-route 原理
+
+## history & hash 路由
+
+hash 路由通过监听锚点变更触发 callback 实现路由切换
+history 路由通过 h5 出的 全局 history 对象 处理 url，并阻止
+
+# 长安 一面
+
+## 性能指标
+
+## 性能优化
+
+## 自己实现一个埋点上报 sdk 的思路
+
+## 埋点上报性能优化思路
+
+1.  图片请求（Image Beacon）：通过创建一个 Image 对象，将要上报的数据作为 URL 参数拼接到一个 1x1 像素的透明图片 URL 中，发送一个 GET 请求来触发上报。
+
+2.  Navigator.sendBeacon()：Navigator.sendBeacon()方法允许在页面卸载时异步发送数据。它通常用于在页面关闭时进行最后的数据上报，以确保数据能够成功发送。
+
+# 马上消费
+
+## shell 脚本
+
+## JSX 编译过程
+
+## useState useReducer 有什么异同即实现原理
+
+useState mount update 阶段返回内容是否一致？
+
+## 实现一个方法组件调用弹窗 返回 promise 当 点击确认/取消 时 该 promise 状态变更返回具体操作类型
+
+## 打包时将静态资源图片上传至 oss 服务器并将对应位置替换为 oss 服务器返回的图片链接，已上传图片则直接替换不重复上传。 （loader
+
+## 鼠标 hover 到第一个子 div，第二个子 div 更改背景色 -> 这样的组件有一百个时怎么实现(css 伪选择器)
+
+```html
+<div>
+  <div></div>
+  <div></div>
+</div>
+```
+
+## 为什么 类组件 和 函数组件 可以混合使用
+
+## 自定义 hook
+
+## 防抖 节流
+
+## webpack compiler & compilation
+
+有一个实例还是多个
+
+## ts pick omit
+
+## 怎么约束 T 是 string 或 number
+
+## 重写了 axios 只返回 response.data 这时候 ts 会报错 怎么解决
