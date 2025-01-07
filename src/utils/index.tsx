@@ -48,3 +48,12 @@ export const maxNum = (nums: number[]) => {
   if (res.startsWith("0")) return "0";
   return res;
 };
+
+export const getTime = (fn: Function, args: number[]) => {
+  let time = new Date().getTime();
+  const res = fn(args);
+  console.log("res", res);
+
+  const hostTime = new Date().getTime() - time;
+  console.log(`${fn.name} hostTime`, hostTime);
+};
