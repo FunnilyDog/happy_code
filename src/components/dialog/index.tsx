@@ -1,8 +1,4 @@
-import React, { useEffect } from "react";
-
 import styles from "./index.module.less";
-import ReactDOM from "react-dom";
-import { Portal } from "../Portal";
 import { createRoot } from "react-dom/client";
 
 type PropsType = {
@@ -31,19 +27,17 @@ const Modal = (props: PropsType) => {
 
 const ConFirmModel = (props: any) => {
   const Element = (props: any) => {
-    const { visible, title, context } = props;
+    const { title, context } = props;
     return (
-      visible && (
-        <div className={styles.overlay} id={"model"}>
-          <div className={styles.modal}>
-            {title}{" "}
-            <button className={styles.closeBtn} onClick={close}>
-              关闭&times;
-            </button>
-            <div className={styles.modalContent}>{context}</div>
-          </div>
+      <div className={styles.overlay} id={"model"}>
+        <div className={styles.modal}>
+          {title}{" "}
+          <button className={styles.closeBtn} onClick={close}>
+            关闭&times;
+          </button>
+          <div className={styles.modalContent}>{context}</div>
         </div>
-      )
+      </div>
     );
   };
 
@@ -51,17 +45,18 @@ const ConFirmModel = (props: any) => {
   let root: any = null;
 
   const confirm = (props: any) => {
-    const { target, title, context, visible } = props;
+    const { target, title, context } = props;
     div.id = "div";
     document.body.appendChild(div);
     const contanier = target || document.getElementById("div");
     if (contanier) {
-      root = createRoot(contanier);
+      if (!root)
+        root = createRoot(contanier, { identifierPrefix: "customRoot" });
       root.render(Element({ title, context }));
     }
   };
   const close = () => {
-    root = root?.unmount(div);
+    root = root?.unmount();
     if (div.parentNode) {
       div.parentNode.removeChild(div);
     }
