@@ -21,6 +21,15 @@ var canvas = document.getElementById("myCanvas");
 var dataURL = canvas.toDataURL("image/png");
 ```
 
+# apply call bind
+
+```javascript
+fn.apply(thisObj, [1, 2, 3]);
+fn.call(thisObj, 1, 2, 3);
+const a = fn.bind(thisObj, 1, 2, 3);
+a();
+```
+
 # ES6 新特性
 
 1. 块级作用域 let const 无变量提升 const 创建变量不可更改

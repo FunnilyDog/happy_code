@@ -8,7 +8,6 @@ const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 const router = createBrowserRouter(routes as any);
-console.log("router", router);
 
 root.render(<RouterProvider router={router} />);
 

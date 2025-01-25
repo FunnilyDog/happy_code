@@ -26,7 +26,7 @@ export const useDebounce = <T extends any[]>(
         delay
       );
     },
-    [fn, delay, options]
+    [immediately, delay]
   );
 
   return {

@@ -1,12 +1,25 @@
-# const root = ReactDOM.createRoot(document.getElementById("root"))
+---
+title: "React18 阅读笔记 -- render 调度阶段"
+date: 2025-01-13T13:55:00+08:00
+draft: false
+textColor: white
+summary: "整理 react 18 源码 render 方法 的整体流程 每个步骤做了什么"
+---
+
+{{< badge >}}
+New article!
+{{< /badge >}}
+
+## ReactDOM.createRoot
 
 创建了一个 reactfiberrootnode current 属性指向一个新 fiber,并绑定所有事件监听
 
 ```ts
-/** 创建 tag = 1 的 FiberRoot 对象
+  /**
+   * 创建 tag = 1 的 FiberRoot 对象
    * 并在current 上挂载了一个 tag = 3, mode = 1 的空fiber
-   *  初始化该 fiber 的 UpdateQueue  initializeUpdateQueue(uninitializedFiber)
-   * */
+   * 初始化该 fiber 的 UpdateQueue  initializeUpdateQueue(uninitializedFiber)
+   */
   const root = createContainer(
     container,
     ConcurrentRoot, //  常量 1
@@ -34,7 +47,7 @@
   return new ReactDOMRoot(root);
 ```
 
-# root.render(<Index />)
+## react
 
 ```ts
 // path: packages/react-dom/src/client/ReactDomRoot.js
@@ -403,137 +416,3 @@ function commitRootImpl(
 
 }
 ```
-
-```ts
-// path: packages/react-reconciler/src/ReactFiberBeginWork.old.js
-beginWork = (current, unitOfWork, lanes) => {
-  didReceiveUpdate = false;
-  workInProgress.lanes = NoLanes;
-  return updateHostRoot(current, workInProgress, renderLanes);
-};
-
-function updateHostRoot(current, workInProgress, renderLanes) {
-  pushHostRootContext(workInProgress);
-
-  // 将 current 的 UpdateQueue 拷贝给 workInProgress
-  cloneUpdateQueue(current, workInProgress);
-
-  /**
-   * 将当前将要进行的更新 shared.pending 的环形链表，拆开拼接到到 lastBaseUpdate 的后面；
-   * 执行 firstBaseUpdate 链表的操作时，若当前 update 对应的任务的优先级符合要求，则执行；
-   * 若优先级较低，则存储执行到当前节点的状态，做为下次渲染时的初始值，和接下来所有的 update 节点；
-   * 将执行所有操作后得到的 newState 重新给到 workInProgress.memoizedState；
-   * 然后存储刚才淘汰下来的低优先级任务的链表，以便下次更新；
-   */
-  processUpdateQueue(workInProgress, nextProps, null, renderLanes);
-
-  const nextState: RootState = workInProgress.memoizedState;
-  const root: FiberRoot = workInProgress.stateNode;
-  const nextChildren = nextState.element;
-
-  reconcileChildren(current, workInProgress, nextChildren, renderLanes);
-
-  return workInProgress.child;
-}
-
-function reconcileChildren(
-  current: Fiber | null,
-  workInProgress: Fiber,
-  nextChildren: any, // 初次挂载时为 render 方法 中的参数
-  renderLanes: Lanes
-) {
-  if (current === null) {
-    // mountChildFibers 也就是初始化 ChildReconciler 后 执行 reconcileChildFibers
-    workInProgress.child = mountChildFibers(
-      workInProgress,
-      null,
-      nextChildren,
-      renderLanes
-    );
-    // 更新阶段
-  } else {
-    workInProgress.child = reconcileChildFibers(
-      workInProgress,
-      current.child,
-      nextChildren,
-      renderLanes
-    );
-  }
-}
-```
-
-```ts
-// path: packages/react-reconciler/src/ReactChildFiber.old.js
-//  根据 newChild.$$typeof 不同类型 创建 fiber
-function reconcileChildFibers(
-  returnFiber: Fiber,
-  currentFirstChild: Fiber | null,
-  newChild: any,
-  lanes: Lanes
-): Fiber | null {
-  if (typeof newChild === "object" && newChild !== null) {
-    switch (newChild.$$typeof) {
-      case REACT_ELEMENT_TYPE: // react.element
-        return placeSingleChild(
-          // 调用 createFiberFromElement 为child 创建 fiber
-          reconcileSingleElement(
-            returnFiber,
-            currentFirstChild,
-            newChild,
-            lanes
-          )
-        );
-      // 省略掉其他case
-    }
-
-    if (isArray(newChild)) {
-      return reconcileChildrenArray(
-        returnFiber,
-        currentFirstChild,
-        newChild,
-        lanes
-      );
-    }
-    if (getIteratorFn(newChild)) {
-      return reconcileChildrenIterator(
-        returnFiber,
-        currentFirstChild,
-        newChild,
-        lanes
-      );
-    }
-
-    throwOnInvalidObjectType(returnFiber, newChild);
-  }
-}
-```
-
-```ts
-// path: packages/react-reconciler/src/ReactFiberCompleteWork.old.js
-function completeWork(
-  current: Fiber | null,
-  workInProgress: Fiber,
-  renderLanes: Lanes
-): Fiber | null {
-  switch (workInProgress.tag) {
-    case HostText: {
-      // ...省略部分代码
-      // 根据不同tag 为 stateNode 创建 对应dom 节点
-      workInProgress.stateNode = createTextInstance(
-        newText,
-        rootContainerInstance, // root
-        currentHostContext,
-        workInProgress
-      );
-      // 将所有child 的 return赋值为 completedWork；
-      // 计算 completedWork 的 subtreeFlags
-      bubbleProperties(workInProgress);
-      return null;
-    }
-  }
-}
-```
-
-## mount 阶段
-
-###

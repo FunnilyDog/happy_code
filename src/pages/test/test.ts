@@ -1,108 +1,159 @@
+
 export const test = () => {};
 
-// 金融 格式化
 /**
- * params： number
- * return  100,000
+ * 
+ * 给定一个菜单数据，结构如下：
+请实现一个函数，返回一个包含所有完整菜单路径url的数组：['a/b/c', 'a/c/e', ...]
+数据如下：
+const urls = [
+  {
+    url: "/business",
+    name: "商务",
+    children: [
+      {
+        url: "/product-reporting",
+        name: "产品申报",
+        children: []
+      },
+      {
+        url: "/offerlist",
+        name: "报价列表",
+        children: []
+      }
+    ]
+  },
+  {
+    url: "/product",
+    name: "产品",
+    children: [
+      {
+        url: "/certification",
+        name: "产品包装认证",
+        children: [
+          {
+            url: "/cert1",
+            name: "包装认证1",
+            children: []
+          },
+          {
+            url: "/cert2",
+            name: "包装认证2",
+            children: []
+          }
+        ]
+      },
+      {
+        url: "/catalog",
+        name: "产品类目",
+        children: []
+      }
+    ]
+  },
+  {
+    url: "/order",
+    name: "订单",
+    children: []
+  }
+];
+    
+// 输出：
+[
+	'/business/product-reporting',
+	'/business/offerlist',
+	'/product/certification/cert1',
+	'/product/certification/cert2',
+	'/product/catalog',
+	'/order'
+]
  */
 
-function addStrings(num1: string, num2: string): string {
-  const len1 = num1.length,
-    len2 = num2.length;
-
-  let m = len1 - 1,
-    n = len2 - 1,
-    temp = 0;
-  let res = "";
-
-  while (m >= 0 || n >= 0) {
-    let sum =
-      Number(m >= 0 ? num1[m] : 0) + Number(n >= 0 ? num2[n] : 0) + temp;
-    if (sum >= 10) {
-      temp = 1;
-      sum = sum - 10;
-    } else temp = 0;
-    res = sum + res;
-    m--;
-    n--;
+const urls = [
+  {
+    url: "/business",
+    name: "商务",
+    children: [
+      {
+        url: "/product-reporting",
+        name: "产品申报",
+        children: []
+      },
+      {
+        url: "/offerlist",
+        name: "报价列表",
+        children: []
+      }
+    ]
+  },
+  {
+    url: "/product",
+    name: "产品",
+    children: [
+      {
+        url: "/certification",
+        name: "产品包装认证",
+        children: [
+          {
+            url: "/cert1",
+            name: "包装认证1",
+            children: []
+          },
+          {
+            url: "/cert2",
+            name: "包装认证2",
+            children: []
+          }
+        ]
+      },
+      {
+        url: "/catalog",
+        name: "产品类目",
+        children: []
+      }
+    ]
+  },
+  {
+    url: "/order",
+    name: "订单",
+    children: []
   }
-  return temp ? temp + res : res;
-}
+];
+type Obj = {
+  url: string;
+  name: string;
+  children: Obj[];
+};
 
-// function multiply(num1: string, num2: string): string {
-//   let sum = "0",
-//     len1 = num1.length - 1,
-//     len2 = num2.length - 1;
-
-//   for (let i = len1; i >= 0; i--) {
-//     let m1 = num1[i];
-//     let curO1 = "";
-//     for (let j = len1; j > i; j--) {
-//       curO1 += "0";
-//     }
-//     console.log({ curO1 });
-
-//     for (let m = len2; m >= 0; m--) {
-//       let m2 = num2[m];
-//       let cur02 = "";
-//       for (let n = len2; n > m; n--) {
-//         cur02 += "0";
-//       }
-//       let cur = (+m1 * +m2).toString();
-//       cur = cur + curO1 + cur02;
-
-//       while (cur[0] == "0" && cur.length > 0) {
-//         cur = cur.slice(1);
-//       }
-//       sum = addStrings(sum, cur);
-//     }
-//   }
-//   return sum.toString();
-// }
-
-function multiply(num1: string, num2: string): string {
-  if (num1 === "0" || num2 === "0") return "0";
-  /**
-   * 创建 tag = 1 的 FiberRoot 对象
-   * 并在current 上挂载了一个 tag = 3, mode = 1 的空fiber
-   * 初始化该 fiber 的 UpdateQueue  initializeUpdateQueue(uninitializedFiber)
-   */
-  /**
-   *
-   *
-   */
-  let m = num1.length,
-    n = num2.length,
-    sumArr = new Array(m + n).fill(0);
-  for (let i = m - 1; i >= 0; i--) {
-    for (let j = n - 1; j >= 0; j--) {
-      const idx = i + j;
-      const preIdx = i + j + 1;
-      const temp = +num1[i] * +num2[j] + sumArr[preIdx];
-
-      sumArr[idx] += Math.floor(temp / 10);
-      sumArr[preIdx] = temp % 10;
-
-      let aa = [...sumArr];
-
-      console.log({ i, j, temp, aa });
+const getUrl = (preUrl: string = "", res: string[] = [], arr: Obj[]): any => {
+  const len = arr.length;
+  for (let i = 0; i < len; i++) {
+    const item = arr[i];
+    const curUrl = preUrl + item.url;
+    if (!item.children.length) {
+      res.push(curUrl);
+    } else {
+      let children = item.children;
+      let temp = getUrl(curUrl, res, children);
+      res.concat(temp);
     }
   }
-  console.log("sumArr", sumArr);
+  return res;
+};
 
-  while (sumArr[0] == 0) {
-    sumArr.shift();
+const getUrls = getUrl.bind(null, "", []);
+
+console.log("-->", getUrls(urls));
+
+function findKthLargest(nums: number[], k: number): number {
+  let map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    map.set(nums[i], 1);
   }
-  return sumArr.join("");
+  map.forEach((val, key) => {
+    console.log("val", val, key);
+  });
+  return 1
 }
 
-const aa = multiply("99", "99");
+findKthLargest([3, 2, 1, 5, 6, 4],2);
 
-console.log({
-  aa,
-  isTrue:
-    aa === "67143675422804947379429215144664313370120390398055713625298709447"
-  //        67143675422804950950894450486013855453431967744504577914139585479n
-});
-
-console.log("addStrings", addStrings("0000", "0"));

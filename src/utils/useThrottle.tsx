@@ -21,9 +21,11 @@ export const useThrottle = <T extends any[]>(
       }
       const now = +new Date();
       if (+preTime.current + delay > now) {
-        window.clearTimeout(timer.current);
+        clearTimeout(timer.current);
         timer.current = window.setTimeout(
-          () => fnRef.current(...curArgs.current),
+          () => {
+            fnRef.current(...curArgs.current)
+          },
           delay
         );
       } else {
@@ -31,7 +33,7 @@ export const useThrottle = <T extends any[]>(
         preTime.current = now;
       }
     },
-    [fn, delay, options]
+    [immediately, delay]
   );
 
   return {
