@@ -23,5 +23,9 @@
   "include": [
     "src",
     "global.d.ts"
-  ]
+  ],
+  "baseUrl": "./",
+  "paths": {
+    "@utils": "src/utils"
+  },
 }

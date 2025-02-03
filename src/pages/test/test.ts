@@ -1,4 +1,3 @@
-
 export const test = () => {};
 
 /**
@@ -142,7 +141,7 @@ const getUrl = (preUrl: string = "", res: string[] = [], arr: Obj[]): any => {
 
 const getUrls = getUrl.bind(null, "", []);
 
-console.log("-->", getUrls(urls));
+// console.log("-->", getUrls(urls));
 
 function findKthLargest(nums: number[], k: number): number {
   let map = new Map();
@@ -152,8 +151,7 @@ function findKthLargest(nums: number[], k: number): number {
   map.forEach((val, key) => {
     console.log("val", val, key);
   });
-  return 1
+  return 1;
 }
 
-findKthLargest([3, 2, 1, 5, 6, 4],2);
-
+// findKthLargest([3, 2, 1, 5, 6, 4],2);

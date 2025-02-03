@@ -1,23 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { PersonContext, useHeader } from "../../contexts/personContext";
 import { ChildA } from "./childA";
 import { ChildB } from "./childB";
 import styles from "./index.module.less";
+import React from "react";
 
 const Index = () => {
+  console.log("test Context component");
+
   const values = useHeader();
-  console.log("Parent values", values);
   const channel = new MessageChannel();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const iframe: any = document.getElementsByTagName("iframe")[0];
     const onLoad = () => {
+      console.log("onLoad", onLoad);
+
+      iframe.contentWindow.postMessage("main", "*", [channel.port1]);
+
       channel.port2.onmessage = (e) => {
         console.log("收到信息", e);
+        channel.port2.postMessage("hello from Main");
       };
-      iframe.contentWindow.postMessage("main", "*", [channel.port1]);
     };
+
     iframe.addEventListener("load", onLoad);
+
+    return () => {
+      iframe.removeEventListener("load", onLoad);
+    };
   }, [channel.port1, channel.port2]);
 
   return (
@@ -32,4 +43,9 @@ const Index = () => {
   );
 };
 
-export default Index;
+const MemoIndex = React.memo(Index, (pre, cur) => {
+  console.log("memo arePropsEqual", { pre, cur });
+
+  return true;
+});
+export default MemoIndex;

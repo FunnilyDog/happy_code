@@ -6,6 +6,7 @@ import TestContext from "../pages/testContext";
 
 // const TestContext = lazy(() => import("../pages/testContext"));
 const Test = lazy(() => import("../pages/test"));
+const TestStore = lazy(() => import("../pages/testStore"));
 
 const routes = [
   // Navigate 重定向
@@ -18,6 +19,14 @@ const routes = [
     element: (
       <Suspense>
         <TestContext />
+      </Suspense>
+    )
+  },
+  {
+    path: "/testStore",
+    element: (
+      <Suspense>
+        <TestStore />
       </Suspense>
     )
   },

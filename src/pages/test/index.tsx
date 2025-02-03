@@ -1,66 +1,88 @@
 import { useNavigate } from "react-router-dom";
 import { test } from "./test";
 import Modal from "../../components/dialog";
-import {  useLayoutEffect } from "react";
 import { useThrottle } from "../../utils/useThrottle";
+import TestStore from "../testStore";
+import useTestStore from "../../stores/testStore";
+import { useCallback, useEffect } from "react";
+import { largeArr } from "./data";
 // import { useState } from "react";
-import { algorithm } from "./algorithm";
+
 const Index = () => {
-  // test();
-  algorithm();
+  test();
+
   const navgiteTo = useNavigate();
+  const bearsAdd = useTestStore((state) => state.bearsAdd);
 
   const { run: throttleFn } = useThrottle(() => {
     console.log("cur", performance.now());
   }, 1000);
 
-  // useEffect(()=> {
-  //   const worker = new Worker(new URL("./worker.ts", import.meta.url));
-
-  //   worker.onmessage = (e)=> {
-  //     console.log('e',e);
-  //     worker.terminate()
-  //   }
-  // },[])
-
-  useLayoutEffect(() => {
-    // window.addEventListener("message", (val) => {
-    //   console.log("val", val);
-    //   const port1 = val.ports[0];
-    //   console.log("port1", port1);
-    //   port1.postMessage("iframe 发送信息");
-    // });
+  const logFun = useCallback(() => {
+    console.log("222222");
   }, []);
+
+  const getRes = () => {
+    let res = 0;
+    for (let i = 0; i < largeArr.length; i++) {
+      res += largeArr[i];
+    }
+    console.log("res", res);
+
+    return res;
+  };
+
+  useEffect(() => {
+    getRes();
+    const fun = (event: any) => {
+      if (event.data === "main" && event.ports[0]) {
+        const port = event.ports[0];
+        console.log("port", port);
+
+        port.postMessage("Hello from iframe!");
+        // 监听 port 的消息
+        port.onmessage = (event: any) => {
+          console.log("Received message from parent:", event.data);
+          // port.postMessage("Hello from iframe!");
+        };
+      }
+    };
+    window.onmessage = fun;
+  }, []);
+
+  useEffect(() => {
+    logFun();
+  }, [bearsAdd, logFun]);
+
   return (
-    <div id="222">
-      <div>点击</div>
+    <>
+      <div id="222">
+        <div>点击</div>
 
-      <button
-        id="form"
-        onClick={() => {
-          navgiteTo("/testContext");
-        }}
-      >
-        跳转
-      </button>
+        <button
+          id="form"
+          onClick={() => {
+            navgiteTo("/testContext");
+          }}
+        >
+          跳转
+        </button>
 
-      <input type="text" onChange={throttleFn} />
-      <button
-        onClick={() => {
-          Modal.confirm({
-            title: "111",
-            context: <div>22222</div>
-          });
-        }}
-      >
-        打开弹窗
-      </button>
-      <div style={{ height: "100vh" }}>高度 100vh</div>
-      <div style={{ height: "100vh" }}>高度 100vh</div>
-      {/* <Modal visible={visible} show={show} onClose={onClose}>
-        <div>1111</div>
-      </Modal> */}
-    </div>
+        <input type="text" onChange={throttleFn} />
+        <button
+          onClick={() => {
+            Modal.confirm({
+              title: "111",
+              context: <div>22222</div>
+            });
+          }}
+        >
+          打开弹窗
+        </button>
+      </div>
+      <button onClick={() => bearsAdd(11)}>add bears</button>
+      <TestStore />
+    </>
   );
 };
 

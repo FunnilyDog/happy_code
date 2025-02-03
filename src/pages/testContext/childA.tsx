@@ -2,7 +2,7 @@ import { memo } from "react";
 import { GrandSon } from "./grandSun";
 import { GrandSonB } from "./grandSunB";
 
-const ChildA = memo(() => {
+const ChildA = () => {
   console.log("ChildA 更新");
 
   return (
@@ -13,7 +13,7 @@ const ChildA = memo(() => {
       <GrandSonB />
     </div>
   );
-});
+};
 // const memoIndex = memo(ChildA);
 
 export { ChildA };

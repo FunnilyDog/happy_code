@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export const useThrottle = <T extends any[]>(
   fn: (...args: T) => any,
@@ -22,12 +22,9 @@ export const useThrottle = <T extends any[]>(
       const now = +new Date();
       if (+preTime.current + delay > now) {
         clearTimeout(timer.current);
-        timer.current = window.setTimeout(
-          () => {
-            fnRef.current(...curArgs.current)
-          },
-          delay
-        );
+        timer.current = window.setTimeout(() => {
+          fnRef.current(...curArgs.current);
+        }, delay);
       } else {
         fnRef.current(...curArgs.current);
         preTime.current = now;

@@ -44,6 +44,8 @@ const babelRuntimeRegenerator = require.resolve("@babel/runtime/regenerator", {
   paths: [babelRuntimeEntry]
 });
 
+const BabelPluginReactCompiler = require.resolve("babel-plugin-react-compiler");
+
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== "false";
@@ -323,6 +325,7 @@ module.exports = function (webpackEnv) {
           "react-dom$": "react-dom/profiling",
           "scheduler/tracing": "scheduler/tracing-profiling"
         }),
+        "@utils": "src/utils",
         ...(modules.webpackAliases || {})
       },
       plugins: [
@@ -774,35 +777,31 @@ module.exports = function (webpackEnv) {
             infrastructure: "silent"
           }
         }),
-      !disableESLintPlugin &&
-        new ESLintPlugin({
-          // Plugin options
-          extensions: ["js", "mjs", "jsx", "ts", "tsx"],
-          formatter: require.resolve("react-dev-utils/eslintFormatter"),
-          eslintPath: require.resolve("eslint"),
-          failOnError: true,
-          context: paths.appSrc,
-          cache: true,
-          cacheLocation: path.resolve(
-            paths.appNodeModules,
-            ".cache/.eslintcache"
-          ),
-          // ESLint class options
-          cwd: paths.appPath,
-          resolvePluginsRelativeTo: __dirname,
-          baseConfig: {
-            extends: [require.resolve("eslint-config-react-app/base")],
-            plugins: ["eslint-plugin-react-compiler"],
-            rules: {
-              ...(!hasJsxRuntime && {
-                "react/react-in-jsx-scope": "error"
-              }),
-              "react-compiler/react-compiler": "error",
-              "react-hooks/exhaustive-deps": "warn",
-              "react-hooks/rules-of-hooks": "error"
-            }
+      new ESLintPlugin({
+        // Plugin options
+        extensions: ["js", "mjs", "jsx", "ts", "tsx"],
+        formatter: require.resolve("react-dev-utils/eslintFormatter"),
+        eslintPath: require.resolve("eslint"),
+        failOnError: true,
+        context: paths.appSrc,
+        cache: true,
+        cacheLocation: path.resolve(
+          paths.appNodeModules,
+          ".cache/.eslintcache"
+        ),
+        // ESLint class options
+        cwd: paths.appPath,
+        resolvePluginsRelativeTo: __dirname,
+        baseConfig: {
+          extends: [require.resolve("eslint-config-react-app/base")],
+          plugins: ["eslint-plugin-react-compiler"],
+          rules: {
+            ...(!hasJsxRuntime && {
+              "react/react-in-jsx-scope": "error"
+            })
           }
-        })
+        }
+      })
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
