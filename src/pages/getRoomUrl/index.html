@@ -1,0 +1,135 @@
+<!-- <!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <title>好耶</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/video.js@7.14.3/dist/video-js.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="container mt-3">
+        <div class="form-group">
+          <label for="room_id">抖音分享URL或房间ID：</label>
+          <input
+            type="text"
+            class="form-control"
+            id="room_id"
+            v-model="room_id"
+          />
+          <label for="hls_url" v-if="hls_url">HLS地址：</label>
+          <input
+            type="text"
+            class="form-control"
+            id="hls_url"
+            v-if="hls_url"
+            v-model="hls_url"
+          />
+          <label for="flv_url" v-if="flv_url">FLV地址：</label>
+          <input
+            type="text"
+            class="form-control"
+            id="flv_url"
+            v-if="flv_url"
+            v-model="flv_url"
+          />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" v-on:click="get_address">
+            获取源地址
+          </button>
+          <button
+            class="btn btn-primary"
+            v-on:click="play_video"
+            v-if="hls_url"
+          >
+            播放 HLS
+          </button>
+        </div>
+        <div class="row mt-3 alert alert-primary">
+          说明：<br />
+          1. HLS地址里的_hd _or4 去掉可以更改到最高画质（更改播放地址后点击“播放
+          HLS”按钮即可更换视频源地址进行播放）。<br />
+          2. 如果上面一点去掉后播放只有声音没有画面，请使用第三方播放器（如
+          Potplayer 、 VLC）播放。<br />
+          3. 目前五小只的直播间数字ID不确定，可在手机上分享连接后丢上面看。<br />
+          4. 直播间地址获取方式参考
+          https://github.com/wbt5/real-url/blob/master/douyin.py <br />
+          5.
+          <a
+            href="https://gist.github.com/brainbush/d0c1f40ee0d6222ed2cebcc21fc371e2"
+            target="_blank"
+            >源代码看这里</a
+          ><br />
+        </div>
+        <div class="row" v-if="play">
+          <video-js
+            id="video-player"
+            style="height: 100%"
+            ref="video_player"
+            class="vjs-default-skin embed-responsive embed-responsive-16by9 mb-3"
+            controls
+          >
+            <source
+              :src="this.hls_url"
+              type="application/x-mpegurl"
+              ref="video-src"
+            />
+          </video-js>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    window.VIDEOJS_NO_DYNAMIC_STYLE = true;
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          room_id: null,
+          play: false,
+          player: null,
+          hls_url: null,
+          flv_url: null
+        };
+      },
+      methods: {
+        get_address: function () {
+          axios.post("", { room_id: this.room_id }).then(
+            function (response) {
+              let data = response.data;
+              let status = data.status;
+              if (status === 0) {
+                this.flv_url = data.rtmp_pull_url;
+                this.hls_url = data.hls_pull_url;
+              } else {
+                alert("失败");
+              }
+            }.bind(this)
+          );
+        },
+        play_video: function () {
+          if (!this.play) {
+            this.play = true;
+            this.$nextTick(function () {
+              this.player = videojs("video-player");
+            });
+          } else {
+            videojs("video-player").src(this.hls_url);
+          }
+        }
+      }
+    });
+  </script>
+</html> -->

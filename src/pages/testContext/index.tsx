@@ -11,25 +11,25 @@ const Index = () => {
   const values = useHeader();
   const channel = new MessageChannel();
 
-  useLayoutEffect(() => {
-    const iframe: any = document.getElementsByTagName("iframe")[0];
-    const onLoad = () => {
-      console.log("onLoad", onLoad);
+  // useLayoutEffect(() => {
+  //   const iframe: any = document.getElementsByTagName("iframe")[0];
+  //   const onLoad = () => {
+  //     console.log("onLoad", onLoad);
 
-      iframe.contentWindow.postMessage("main", "*", [channel.port1]);
+  //     iframe.contentWindow.postMessage("main", "*", [channel.port1]);
 
-      channel.port2.onmessage = (e) => {
-        console.log("收到信息", e);
-        channel.port2.postMessage("hello from Main");
-      };
-    };
+  //     channel.port2.onmessage = (e) => {
+  //       console.log("收到信息", e);
+  //       channel.port2.postMessage("hello from Main");
+  //     };
+  //   };
 
-    iframe.addEventListener("load", onLoad);
+  //   // iframe.addEventListener("load", onLoad);
 
-    return () => {
-      iframe.removeEventListener("load", onLoad);
-    };
-  }, [channel.port1, channel.port2]);
+  //   return () => {
+  //     iframe.removeEventListener("load", onLoad);
+  //   };
+  // }, [channel.port1, channel.port2]);
 
   return (
     <PersonContext.Provider value={values}>
@@ -38,7 +38,14 @@ const Index = () => {
         <ChildA />
         <ChildB />
       </div>
-      <iframe title="test" src="http://localhost:3001/test" />
+      {/* <iframe
+        width="1080"
+        height="800"
+        // frameborder="0"
+        src="https://open.douyin.com/player/video?vid=660292215268&autoplay=1"
+        referrerPolicy="unsafe-url"
+        // allowfullscreen
+      ></iframe> */}
     </PersonContext.Provider>
   );
 };

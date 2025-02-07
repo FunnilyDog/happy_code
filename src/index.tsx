@@ -10,11 +10,7 @@ const root = createRoot(container);
 
 const router = createBrowserRouter(routes as any);
 
-root.render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
-);
+root.render(<RouterProvider router={router} />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

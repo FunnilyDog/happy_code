@@ -9,6 +9,24 @@ module.exports = function (api) {
           target: "18"
         }
       ]
+      // [
+      //   "import",
+      //   {
+      //     libraryName: "antd",
+      //     libraryDirectory: "es",
+      //     style: "css"
+      //   },
+      //   "antd"
+      // ],
+      // [
+      //   "import",
+      //   {
+      //     libraryName: "@formily/antd",
+      //     libraryDirectory: "esm",
+      //     style: true
+      //   },
+      //   "@formily/antd"
+      // ]
     ]
   };
 };
