@@ -73,8 +73,9 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "dev": "rsbuild dev",
+    "build": "rsbuild build"
   },
   "browserslist": {
     "production": [
@@ -150,6 +151,10 @@
   "sideEffects": false,
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@rsbuild/core": "^1.2.8",
+    "@rsbuild/plugin-babel": "^1.0.3",
+    "@rsbuild/plugin-less": "^1.1.0",
+    "@rsbuild/plugin-react": "^1.1.0",
     "babel-plugin-import": "^1.13.8",
     "babel-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
     "eslint": "^8.57.1",

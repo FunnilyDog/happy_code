@@ -10,7 +10,6 @@ import path from "path";
 const Test = lazy(() => import("../pages/test"));
 const TestStore = lazy(() => import("../pages/testStore"));
 const TestFormily = lazy(() => import("../pages/testFormily"));
-const VideoPlay = lazy(() => import("../pages/videoPlay"));
 
 const routes = [
   // Navigate 重定向
@@ -51,10 +50,6 @@ const routes = [
     //     element: <FormController />
     //   }
     // ]
-  },
-  {
-    path: "VideoPlay",
-    element: <VideoPlay />
   }
 ];
 

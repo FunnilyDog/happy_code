@@ -52,7 +52,6 @@ const Index = () => {
 
 const MemoIndex = React.memo(Index, (pre, cur) => {
   console.log("memo arePropsEqual", { pre, cur });
-
   return true;
 });
-export default MemoIndex;
+export default Index;
