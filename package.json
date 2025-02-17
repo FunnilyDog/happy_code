@@ -72,9 +72,7 @@
     "zustand": "^5.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "test": "node scripts/test.js",
-    "dev": "rsbuild dev",
+    "dev": "rsbuild dev -o",
     "build": "rsbuild build"
   },
   "browserslist": {

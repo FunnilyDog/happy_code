@@ -4,8 +4,8 @@ import Modal from "../../components/dialog";
 import { useThrottle } from "../../utils/useThrottle";
 import TestStore from "../testStore";
 import useTestStore from "../../stores/testStore";
-import { useCallback, useEffect } from "react";
-import { largeArr } from "./data";
+import { useCallback, useEffect, useRef } from "react";
+
 // import { useState } from "react";
 
 const Index = () => {
@@ -14,26 +14,36 @@ const Index = () => {
   const navgiteTo = useNavigate();
   const bearsAdd = useTestStore((state) => state.bearsAdd);
 
+  const videoRef = useRef<any>(null);
+  let cur = 0;
+  let frame = 0;
+  const frameRate = 30;
+
   const { run: throttleFn } = useThrottle(() => {
     console.log("cur", performance.now());
   }, 1000);
 
-  const logFun = useCallback(() => {
-    console.log("222222");
-  }, []);
-
-  const getRes = () => {
-    let res = 0;
-    for (let i = 0; i < largeArr.length; i++) {
-      res += largeArr[i];
+  const palyNextFrame = () => {
+    if (videoRef.current) {
+      // video?.play();
+      videoRef.current.currentTime = frame / frameRate;
+      frame++;
+      if (frame <= videoRef.current.duration * frameRate && cur <= 100) {
+        setTimeout(() => {
+          requestAnimationFrame(palyNextFrame);
+        }, 200);
+      } else {
+        cur = frame = 0;
+      }
     }
-    console.log("res", res);
-
-    return res;
   };
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     palyNextFrame();
+  //   }, 1000);
+  // }, []);
 
   useEffect(() => {
-    getRes();
     const fun = (event: any) => {
       if (event.data === "main" && event.ports[0]) {
         const port = event.ports[0];
@@ -49,10 +59,6 @@ const Index = () => {
     };
     window.onmessage = fun;
   }, []);
-
-  useEffect(() => {
-    logFun();
-  }, [bearsAdd, logFun]);
 
   return (
     <>
@@ -72,8 +78,21 @@ const Index = () => {
         <button
           onClick={() => {
             Modal.confirm({
-              title: "111",
-              context: <div>22222</div>
+              title: "视频逐帧播放",
+              context: (
+                <div>
+                  <video
+                    id="video"
+                    ref={videoRef}
+                    playsInline
+                    controls
+                    autoPlay
+                    // src="https://web.dev/static/articles/video-and-source-tags/video/web-dev-assets/video-and-source-tags/chrome.webm?hl=zh-cn"
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                    onLoadedMetadata={palyNextFrame}
+                  />
+                </div>
+              )
             });
           }}
         >

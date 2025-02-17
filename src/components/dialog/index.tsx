@@ -1,5 +1,7 @@
+import { Button } from "antd";
 import styles from "./index.module.less";
 import { createRoot } from "react-dom/client";
+import { useEffect } from "react";
 
 type PropsType = {
   visible: boolean;
@@ -29,12 +31,14 @@ const ConFirmModel = (props: any) => {
   const Element = (props: any) => {
     const { title, context } = props;
     return (
-      <div className={styles.overlay} id={"model"}>
+      <div className={styles.overlay} id="model">
         <div className={styles.modal}>
-          {title}{" "}
-          <button className={styles.closeBtn} onClick={close}>
-            关闭&times;
-          </button>
+          <div className={styles.header}>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.closeBtn} onClick={close}>
+              &times;
+            </div>
+          </div>
           <div className={styles.modalContent}>{context}</div>
         </div>
       </div>
@@ -49,13 +53,17 @@ const ConFirmModel = (props: any) => {
     div.id = "div";
     document.body.appendChild(div);
     const contanier = target || document.getElementById("div");
+    console.log("title", title, root);
+
     if (contanier) {
-      if (!root)
+      if (!root) {
         root = createRoot(contanier, { identifierPrefix: "customRoot" });
-      root.render(Element({ title, context }));
+      }
+      root.render(<Element title={title} context={context} />);
     }
   };
   const close = () => {
+    console.log("22222");
     root = root?.unmount();
     if (div.parentNode) {
       div.parentNode.removeChild(div);
